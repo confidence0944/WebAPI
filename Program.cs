@@ -33,7 +33,7 @@ namespace WebAPI
             builder.Services.RegisterDBContext(builder.Configuration);
 
             //µù¥UHttpClientªA°È¤ÎLog
-            builder.Services.RegisterHttpClientFactory(builder.Configuration);
+            builder.Services.RegisterHttpClient(builder.Configuration);
 
             var app = builder.Build();
 

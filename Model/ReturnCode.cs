@@ -13,9 +13,9 @@
         public static MobileBankError NoData => new() { Code = "201", Description = "查無資料" };
 
         /// <summary>
-        /// 999 預設錯誤
+        /// 9999 預設錯誤
         /// </summary>
-        public static MobileBankError InternalSystemError => new() { Code = "999", Description = "系統發生錯誤，請洽系統管理員。" };
+        public static MobileBankError InternalSystemError => new() { Code = "9999", Description = "系統發生錯誤，請洽系統管理員。" };
     }
 
     public class MobileBankError

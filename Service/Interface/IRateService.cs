@@ -2,12 +2,8 @@
 
 namespace WebAPI.Service
 {
-    public interface ICurrencyService
+    public interface IRateService
     {
-        Task Create(CurrencyModel model);
-
-        Task Update(CurrencyModel model);
-
-        Task Delete(string currency);
+        Task<RateModel> GetRate();
     }
 }
