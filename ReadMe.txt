@@ -8,18 +8,18 @@
 已完成
 
 4.多語系設計
-未實作
+待實作
 
 5.design pattern 實作
 IOC/DI，Repository Pattern、Restful API
 
 6.能夠運行在 Docker
-未實作
+待實作
 
 7.加解密技術應用 (AES/RSA…etc.)
-未實作
+待實作
 
-8.額外實作項目:
+實作項目:
 (一). 實作統一API回應格式與制定ReturnCode (ApiBaseController.cs、ReturnCode.cs) 
 (二). JsonConverter Format response格式  (JsonDateTimeConverter.cs)
 
