@@ -1,0 +1,51 @@
+{
+  "NLog": {
+    "internalLogLevel": "Warn",
+    "internalLogFile": "D:/LogFiles/internalError.MobileBank.WebApi.log",
+    "internalLogToConsole": true,
+    "autoReload": true,
+    "throwConfigExceptions": true,
+    "extensions": [
+      { "assembly": "NLog.Extensions.Logging" },
+      { "assembly": "NLog.Web.AspNetCore" }
+    ],
+    "variables": {
+      "appName": "MobileBank.WebApi",
+      "logFileName": "D:/LogFiles/${shortdate}/${appName}.log",
+      "logArchiveFileName": "D:/LogFiles/${shortdate}/${appName}_{####}.log"
+    },
+    "default-wrapper": {
+      "type": "AsyncWrapper",
+      "queueLimit": "10000",
+      "overflowAction": "Block"
+    },
+    "targets": {
+      "localFile": {
+        "type": "File",
+        "fileName": "${logFileName}",
+        "archiveAboveSize": "5000000",
+        "archiveNumbering": "Rolling",
+        "archiveFileName": "${logArchiveFileName}",
+        "maxArchiveFiles": "9999",
+        "createDirs": true,
+        "autoFlush": true,
+        "keepFileOpen": false,
+        "encoding": "UTF-8",
+        "layout": "[${date:format=HH\\:mm\\:ss\\.ffff}][${uppercase:${level}}] ${logger} - ${message} ${exception:format=tostring}"
+      }
+    },
+    "rules": [
+      {
+        "logger": "WebAPI.*",
+        "minLevel": "Trace",
+        "writeTo": "localFile"
+      },
+      {
+        "logger": "ApiLogger",
+        "minLevel": "Trace",
+        "writeTo": "localFile",
+        "final": true
+      }
+    ]
+  }
+}
