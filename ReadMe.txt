@@ -1,8 +1,8 @@
 ﻿1.印出所有 API 被呼叫以及呼叫外部 API 的 request and response body log
-已完成:各別是ApiLoggingMiddleware.cs及HttpClientLoggingHandler.cs
+各別是ApiLoggingMiddleware.cs及HttpClientLoggingHandler.cs
 
 2.Error handling 處理 API response
-已完成:GlobleExceptionHandler.cs
+GlobleExceptionHandler.cs
 
 3.swagger-ui
 已完成

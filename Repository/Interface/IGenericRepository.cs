@@ -15,7 +15,7 @@ namespace WebAPI.Interface
 
         void Delete(T instance);
 
-        void Delete(string currency);
+        void Delete(string id);
 
         IQueryable<T> GetAll();
 
