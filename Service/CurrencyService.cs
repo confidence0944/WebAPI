@@ -31,7 +31,7 @@ namespace WebAPI.Service
             List<CurrencyModel> result = new List<CurrencyModel>();
             foreach (var item in data)
             {
-                result.Add(new CurrencyModel() { Currency = item.Currency, CurrencyName = item.CurrencyName });
+                result.Add(new CurrencyModel() { Currency = item.Currency.Trim(), CurrencyName = item.CurrencyName.Trim() });
             }
             return result;
         }

@@ -15,6 +15,12 @@ namespace WebAPI.Controllers
             _currencyService = currencyService;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {         
+            return CustomOKResult(await _currencyService.GetAll());
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create(CurrencyModel currency)
         {
