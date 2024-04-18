@@ -11,7 +11,7 @@ GlobleExceptionHandler.cs
 待實作
 
 5.design pattern 實作
-IOC/DI，Repository Pattern、Restful API
+IOC/DI，Repository Pattern
 
 6.能夠運行在 Docker
 待實作
