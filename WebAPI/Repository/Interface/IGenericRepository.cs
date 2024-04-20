@@ -17,7 +17,7 @@ namespace WebAPI.Interface
 
         void Delete(string id);
 
-        IQueryable<T> GetAll();
+        IEnumerable<T> GetAll();
 
         void SaveChanges();
     }

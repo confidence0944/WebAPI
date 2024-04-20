@@ -18,7 +18,7 @@ namespace Web.Models.Repository
             return db.TbCurrencies.FirstOrDefault(x => x.Currency == currency);
         }
 
-        public IQueryable<TbCurrency> GetAll()
+        public IEnumerable<TbCurrency> GetAll()
         {
             return db.TbCurrencies.OrderBy(x => x.Currency);
         }

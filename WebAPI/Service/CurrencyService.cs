@@ -6,12 +6,10 @@ namespace WebAPI.Service
 {
     public class CurrencyService : ICurrencyService
     {
-        private readonly ILogger<CurrencyService> _logger;
         private readonly ICurrencyRepositoty _currencyRepositoty;
 
-        public CurrencyService(ILogger<CurrencyService> logger, ICurrencyRepositoty currencyRepositoty)
+        public CurrencyService(ICurrencyRepositoty currencyRepositoty)
         {
-            _logger = logger;
             _currencyRepositoty = currencyRepositoty;
         }
 
