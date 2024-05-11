@@ -5,19 +5,13 @@
 GlobleExceptionHandler.cs
 
 ## 3.swagger-ui
-已完成
+包含
 
-## 4.多語系設計
-待實作
-
-## 5.design pattern 實作
+## 4.design pattern 實作
 IOC/DI，Repository Pattern
 
-## 6.能夠運行在 Docker
-待實作
-
-## 7.加解密技術應用 (AES/RSA…etc.)
-待實作
+## 5.加解密技術應用 (AES/RSA…etc.)
+EncrypTools.cs
 
 ## 實作項目:
 (一). 實作統一API回應格式與制定ReturnCode (ApiBaseController.cs、ReturnCode.cs) 

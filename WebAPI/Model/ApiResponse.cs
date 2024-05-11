@@ -26,15 +26,12 @@ namespace WebAPI.Model
         }
 
         [JsonPropertyName("ReturnCode")]
-        [JsonProperty("ReturnCode")]
         public string Code { get; set; }
 
         [JsonPropertyName("ReturnMessage")]
-        [JsonProperty("ReturnMessage")]
         public string Message { get; set; }
 
         [JsonPropertyName("ReturnTime")]
-        [JsonProperty("ReturnTime")]
         public string Time { get; set; }
 
         [JsonPropertyName("Data")]
