@@ -12,8 +12,8 @@ namespace WebAPI.Register
         {
             services.AddDbContext<PracticeContext>(options =>
             {
-                options.UseSqlServer(configuration.GetConnectionString("AppConfig:ConnectionStrings:DbConnection"));
-            });
+                options.UseSqlServer(configuration.GetValue<string>("AppConfig:ConnectionStrings:DbConnection"));
+            }, ServiceLifetime.Singleton);
 
             services.AddScoped<ICurrencyRepositoty, CurrencyRepository>();
 

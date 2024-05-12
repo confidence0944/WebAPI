@@ -1,5 +1,9 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Mvc;
 using NLog;
 using NLog.Web;
+using WebAPI.Filter;
 using WebAPI.Handler;
 using WebAPI.Register;
 
@@ -14,11 +18,25 @@ namespace WebAPI
             var logger = LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
             logger.Debug("init main");
 
-            builder.Services.AddControllers().AddNewtonsoftJson().AddJsonOptions(option =>
+            builder.Services.AddControllers().AddNewtonsoftJson().AddJsonOptions(options =>
             {
-                option.JsonSerializerOptions.PropertyNamingPolicy = null;
-                option.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+                options.JsonSerializerOptions.PropertyNamingPolicy = null;
+                options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;            
             });
+
+            builder.Services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
+
+            //µù¥U°Ñ¼ÆÅçÃÒActionFilter
+            builder.Services.AddControllersWithViews(options =>
+            {
+                options.Filters.Add(typeof(ValidatorFilter));
+            });
+
+            builder.Services.AddFluentValidationAutoValidation();
+            builder.Services.AddValidatorsFromAssemblyContaining(typeof(Model.CurrencyModel.CurrencyModelValidator));
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

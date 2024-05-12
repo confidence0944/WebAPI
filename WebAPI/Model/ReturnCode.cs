@@ -13,6 +13,11 @@
         public static MobileBankError NoData => new() { Code = "201", Description = "查無資料" };
 
         /// <summary>
+        /// 402 資料驗證錯誤
+        /// </summary>
+        public static MobileBankError ValidatorError => new() { Code = "402", Description = "資料驗證錯誤" };
+
+        /// <summary>
         /// 9999 預設錯誤
         /// </summary>
         public static MobileBankError InternalSystemError => new() { Code = "9999", Description = "系統發生錯誤，請洽系統管理員。" };

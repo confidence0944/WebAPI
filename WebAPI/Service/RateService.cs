@@ -1,12 +1,9 @@
 ﻿using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Dynamic;
-using System.Reflection.PortableExecutable;
-using System.Threading.Tasks;
 using WebAPI.Interface;
 using WebAPI.Model;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+
 
 namespace WebAPI.Service
 {

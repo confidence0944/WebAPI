@@ -32,7 +32,7 @@ namespace WebAPI.Controllers
 
         private static JsonSerializerSettings serializerSettings = new JsonSerializerSettings()
         {
-            Formatting = Newtonsoft.Json.Formatting.Indented,
+            Formatting = Formatting.Indented,
             Converters = { new JsonDateTimeConverter(), new StringEnumConverter() },
         };
     }

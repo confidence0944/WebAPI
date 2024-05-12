@@ -9,19 +9,23 @@ Middleware做Rq與Rs Log機制，及HttpClient掛載Handler紀錄Rq與Rs，Globl
 ## 2.Error handling 處理 API response
 GlobleExceptionHandler.cs
 
-## 3.swagger-ui
+## 3.Swagger-ui
 包含
 
-## 4.design pattern 實作
+## 4.Design pattern 實作
 IOC/DI，Repository Pattern
 
-## 5.加解密技術應用 (AES/RSA…etc.)
+## 5.加解密技術應用 (RSA)
 EncrypTools.cs
 
 ## 6.各服務注入初始化進入的位置
-Program.cs
+Program.cs (ApiLog、Service、DBContext、HttpClient)
 
-## 實作項目:
-(一). 實作統一API回應格式與制定ReturnCode (ApiBaseController.cs、ReturnCode.cs) 
-(二). JsonConverter Format response格式  (JsonDateTimeConverter.cs)
+## 7.Request資料驗證
+使用FluentValidation做為資料驗證，並且定義ValidatorFilter攔截錯誤，並轉成制定ValidatorException再往外拋
+讓GlobleExceptionHandler對各別Exception做對應的處理
+
+## 其他實作項目:
+#### (一). 實作統一API回應格式與制定ReturnCode (ApiBaseController.cs、ReturnCode.cs) 
+#### (二). JsonConverter Format response格式  (JsonDateTimeConverter.cs)
 

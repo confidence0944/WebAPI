@@ -1,5 +1,8 @@
 ﻿namespace WebAPI.Model
 {
+    /// <summary>
+    /// 外部匯率Model(CoindeskApi)
+    /// </summary>
     public class CoindeskApiModel
     {
         public Time time { get; set; }

@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
-using System;
-using System.Diagnostics;
 using System.Net;
-using System.Text.RegularExpressions;
+using WebAPI.Exceptions;
 using WebAPI.Model;
 
 namespace WebAPI.Handler
@@ -31,10 +29,20 @@ namespace WebAPI.Handler
 
                     var exception = exceptionHandle.Error;
 
-                    logger.Error(exception, $"Unhandled error occurred at path:'{path}'.");
-                    ApiResponse apiResponse = new ApiResponse(ReturnCode.InternalSystemError, null);
-                    context.Response.StatusCode = (int)HttpStatusCode.OK;
-                    await context.Response.WriteAsJsonAsync(apiResponse);
+                    if (exception.GetType() == typeof(ValidatorException)) //資料驗證錯誤Exception
+                    {
+                        logger.Error(exception, $"validatorException error occurred at path:'{path}'.");
+                        ApiResponse apiResponse = new ApiResponse(ReturnCode.ValidatorError, null);
+                        context.Response.StatusCode = (int)HttpStatusCode.OK;
+                        await context.Response.WriteAsJsonAsync(apiResponse);
+                    }
+                    else
+                    {
+                        logger.Error(exception, $"Unhandled error occurred at path:'{path}'.");
+                        ApiResponse apiResponse = new ApiResponse(ReturnCode.InternalSystemError, null);
+                        context.Response.StatusCode = (int)HttpStatusCode.OK;
+                        await context.Response.WriteAsJsonAsync(apiResponse);
+                    }             
                 });
             });
         }
