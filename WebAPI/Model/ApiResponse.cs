@@ -25,15 +25,19 @@ namespace WebAPI.Model
             Time = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss", System.Globalization.CultureInfo.CurrentCulture);
         }
 
+        //回應代碼
         [JsonPropertyName("ReturnCode")]
         public string Code { get; set; }
 
+        //回應訊息
         [JsonPropertyName("ReturnMessage")]
         public string Message { get; set; }
 
+        //回應時間
         [JsonPropertyName("ReturnTime")]
         public string Time { get; set; }
 
+        //回應資料
         [JsonPropertyName("Data")]
         public dynamic Data { get; set; }
     }

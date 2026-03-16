@@ -38,6 +38,7 @@ namespace WebAPI.Handler
                     }
                     else
                     {
+                        //未攔截到的Exception
                         logger.Error(exception, $"Unhandled error occurred at path:'{path}'.");
                         ApiResponse apiResponse = new ApiResponse(ReturnCode.InternalSystemError, null);
                         context.Response.StatusCode = (int)HttpStatusCode.OK;
