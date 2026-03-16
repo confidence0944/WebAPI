@@ -1,8 +1,8 @@
-﻿using Web.Models.Repository;
+﻿using Microsoft.EntityFrameworkCore;
+using Web.Models.Repository;
 using WebAPI.Entities;
 using WebAPI.Model;
 using WebAPI.Service;
-using WebAPI.Tests;
 
 namespace WebAPI.Controllers.Tests
 {
@@ -13,15 +13,21 @@ namespace WebAPI.Controllers.Tests
 
         [TestInitialize]
         public void SetUp()
-        {
+        {           
+            var options = new DbContextOptionsBuilder<PracticeContext>().UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString()).Options;
+            var context = new PracticeContext(options);
+
             List<TbCurrency> mockData = new List<TbCurrency>()
             {
                 new TbCurrency() { Currency ="EUR", CurrencyName ="歐元" },
                 new TbCurrency() { Currency ="GBP", CurrencyName ="英鎊" },
                 new TbCurrency() { Currency ="USD", CurrencyName ="美元" },
             };
-            var dbContextMock = DbContextMock.GetMock<TbCurrency, PracticeContext>(mockData, x => x.TbCurrencies);
-            currencyService = new CurrencyService(new CurrencyRepository(dbContextMock));
+
+            context.TbCurrencies.AddRange(mockData);
+            context.SaveChanges();
+
+            currencyService = new CurrencyService(new CurrencyRepository(context));
         }
 
         [TestMethod()]
@@ -70,7 +76,7 @@ namespace WebAPI.Controllers.Tests
         }
 
         [TestMethod()]
-        public async Task DeleteEmployee()
+        public async Task DeleteTest()
         {
             //Arrange
             CurrencyModel mock = new CurrencyModel() { Currency = "EUR", CurrencyName = "" };
@@ -81,7 +87,7 @@ namespace WebAPI.Controllers.Tests
             var act = actDatas.FirstOrDefault(x => x.Currency == mock.Currency);
 
             //Assert
-            Assert.IsNotNull(act);
+            Assert.IsNull(act);
         }
     }
 }

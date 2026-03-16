@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
 using WebAPI.Interface;
 using WebAPI.Model;
 

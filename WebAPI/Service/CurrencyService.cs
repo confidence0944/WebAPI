@@ -1,4 +1,5 @@
-﻿using WebAPI.Entities;
+﻿using Web.Models.Repository;
+using WebAPI.Entities;
 using WebAPI.Interface;
 using WebAPI.Model;
 
@@ -36,7 +37,9 @@ namespace WebAPI.Service
 
         public async Task Update(CurrencyModel model)
         {
-            _currencyRepositoty.Update(new TbCurrency() { Currency = model.Currency, CurrencyName = model.CurrencyName });
+            var currency = _currencyRepositoty.Get(model.Currency.Trim());
+            currency.CurrencyName = model.CurrencyName.Trim();
+            _currencyRepositoty.Update(currency);
         }
     }
 }
