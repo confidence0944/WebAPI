@@ -5,6 +5,8 @@
     /// </summary>
     public class AppSetting
     {
+        public bool IsUseSqlLite { get; set; }
+
         public string CoindeskApiUrl { get; set; }
 
         public ConnectionString ConnectionStrings { get; set; }
@@ -12,6 +14,8 @@
         public class ConnectionString
         {
             public string DbConnection { get; set; }
+
+            public string SqlLiteDbConnection { get; set; }
         }
     }
 }

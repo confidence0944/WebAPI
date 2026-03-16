@@ -3,8 +3,10 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using NLog;
 using NLog.Web;
+using WebAPI.Entities;
 using WebAPI.Filter;
 using WebAPI.Handler;
+using WebAPI.Model;
 using WebAPI.Register;
 
 namespace WebAPI
@@ -21,7 +23,7 @@ namespace WebAPI
             builder.Services.AddControllers().AddNewtonsoftJson().AddJsonOptions(options =>
             {
                 options.JsonSerializerOptions.PropertyNamingPolicy = null;
-                options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;            
+                options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
             });
 
             builder.Services.Configure<ApiBehaviorOptions>(options =>
@@ -57,6 +59,17 @@ namespace WebAPI
 
             app.UseMiddleware<ApiLoggingMiddleware>();
             app.ConfigureExceptionHandler(logger);
+
+            var appSetting = builder.Configuration.GetSection("AppConfig").Get<AppSetting>();
+            if (appSetting.IsUseSqlLite)
+            {
+                using (var scope = app.Services.CreateScope())
+                {
+                    var serviceProvider = scope.ServiceProvider;
+                    var db = serviceProvider.GetRequiredService<PracticeContext>();
+                    db.Database.EnsureCreated();
+                }
+            }
 
             if (app.Environment.IsDevelopment())
             {
